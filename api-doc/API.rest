@@ -8,4 +8,3 @@
 
 ##### TEST IF SERVER IS UP
 GET {{SERVER}}
-Authorization: Basic {{USER}} {{PASSWORD}}
