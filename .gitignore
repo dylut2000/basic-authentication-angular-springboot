@@ -1,0 +1,69 @@
+# ----------------------------------------
+# Global ignores
+# ----------------------------------------
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+*.swo
+*.tmp
+*.bak
+*.orig
+.idea/
+.vscode/
+*.iml
+
+# ----------------------------------------
+# Node (Angular 19)
+# ----------------------------------------
+client/node_modules/
+client/dist/
+client/.angular/cache/
+client/.angular/config.json
+client/.angular/
+client/.output/
+client/.env
+client/.env.local
+client/.env.*.local
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
+client/package-lock.json # optional, include if using lockfile elsewhere
+client/.parcel-cache/
+client/.turbo/
+
+# -------------------------------------------
+# Java (Spring Boot 3.5.3 with Maven Backend)
+# -------------------------------------------
+server/target/
+server/.classpath
+server/.project
+server/.settings/
+server/*.log
+server/.mvn/
+server/mvnw
+server/mvnw.cmd
+
+server/mvnw*
+server/mvnw.cmd
+server/.mvn/
+
+# ----------------------------------------
+# OS-specific
+# ----------------------------------------
+# macOS
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.cache/
+
+node_modules
