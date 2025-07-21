@@ -1,0 +1,11 @@
+##### VARIABLES
+@SERVER = http://localhost:8080
+@USER = user
+@PASSWORD = 123456
+@TOKEN = Bearer XXXXXXXXXXXXXXX
+
+
+
+##### TEST IF SERVER IS UP
+GET {{SERVER}}
+Authorization: Basic {{USER}} {{PASSWORD}}
