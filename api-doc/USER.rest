@@ -23,7 +23,7 @@ POST {{SERVER}}/login
 Content-Type: application/json
 
 {
-  "username": "hardylutula@gmail.com",
+  "username": "hardy@gmail.com",
   "password": "123456"
 }
 
