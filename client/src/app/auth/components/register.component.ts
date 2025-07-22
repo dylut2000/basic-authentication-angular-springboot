@@ -25,8 +25,8 @@ import {RouterLink} from '@angular/router';
         <form class="space-y-5">
           <!-- Email -->
           <div>
-            <label class="block text-gray-700 mb-1" for="email">Email</label>
-            <input id="email" type="email" placeholder="Email address"
+            <label class="block text-gray-700 mb-1" for="username">Username</label>
+            <input id="username" type="text" placeholder="Username"
                    class="w-full px-4 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:outline-none" />
           </div>
 
