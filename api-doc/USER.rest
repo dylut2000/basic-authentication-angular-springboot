@@ -11,7 +11,7 @@ POST {{SERVER}}/register
 Content-Type: application/json
 
 {
-  "username": "hardylutula@gmail.com",
+  "username": "hardy@gmail.com",
   "password": "123456",
   "role": "USER"
 }
