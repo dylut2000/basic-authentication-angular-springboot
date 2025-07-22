@@ -11,7 +11,7 @@ POST {{SERVER}}/register
 Content-Type: application/json
 
 {
-  "username": "hardy@gmail.com",
+  "username": "neo@gmail.com",
   "password": "123456",
   "role": "USER"
 }
@@ -23,7 +23,7 @@ POST {{SERVER}}/login
 Content-Type: application/json
 
 {
-  "username": "hardy@gmail.com",
+  "username": "neo@gmail.com",
   "password": "123456"
 }
 
