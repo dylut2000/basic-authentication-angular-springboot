@@ -1,0 +1,61 @@
+##### VARIABLES
+@SERVER = http://localhost:8080/api/todos
+@USER_ID = XXXXXXXXXXXXXXXX
+@TODO_ID = XXXXXXXXXXXXXXXX
+@USER = user
+@PASSWORD = 123456
+@TOKEN = Bearer XXXXXXXXXXXXXXX
+
+
+
+##### GET ALL TODOS
+GET {{SERVER}}
+
+
+
+##### GET ALL TODOS BY USER_ID
+GET {{SERVER}}/{{USER_ID}}
+
+
+
+##### DELETE BY TODO_ID
+DELETE {{SERVER}}/{{TODO_ID}}
+
+
+
+##### UPDATE TODO
+PUT {{SERVER}}/{{TODO_ID}}
+Content-Type: application/json
+
+{
+  "done": true,
+  "title": "Hi there!!!"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

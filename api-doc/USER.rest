@@ -1,0 +1,50 @@
+##### VARIABLES
+@SERVER = http://localhost:8080/api/users
+@USER = user
+@PASSWORD = 123456
+@TOKEN = Bearer XXXXXXXXXXXXXXX
+
+
+
+##### REGISTER USER
+POST {{SERVER}}/register
+Content-Type: application/json
+
+{
+  "username": "hardylutula@gmail.com",
+  "password": "123456",
+  "role": "USER"
+}
+
+
+
+##### LOGIN USER
+POST {{SERVER}}/login
+Content-Type: application/json
+
+{
+  "username": "hardylutula@gmail.com",
+  "password": "123456"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
