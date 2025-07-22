@@ -29,11 +29,12 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRole role = UserRole.USER;
 
+    @Column(nullable = false)
+    private LocalDateTime createdAt;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Todo> todos = new java.util.ArrayList<>();
 
-    @Column(nullable = false)
-    private LocalDateTime createdAt;
 
     @PrePersist
     protected void onCreate() {
