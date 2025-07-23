@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
-import { of } from 'rxjs';
+import {of, tap} from 'rxjs';
 import { catchError, exhaustMap, map } from 'rxjs/operators';
 import * as AuthActions from './auth.actions';
 import { AuthService } from '../service/auth.service';
@@ -29,6 +29,15 @@ export class AuthEffects {
     );
   });
 
+  // REGISTER SUCCESS EFFECT
+
+  registerSuccess$ = createEffect(() => {
+    return this.actions$.pipe(ofType(AuthActions.REGISTER_SUCCESS),
+      tap(data => {
+        this.router.navigate(['/login']);
+      }),
+    );
+  }, { dispatch: false });
 
   // LOGIN EFFECT
 
@@ -45,6 +54,17 @@ export class AuthEffects {
       )
     );
   });
+
+  // LOGIN SUCCESS EFFECT
+
+  loginSuccess$ = createEffect(() => {
+    return this.actions$.pipe(ofType(AuthActions.LOGIN_SUCCESS),
+      tap(data => {
+        console.log({data});
+        this.router.navigate(['/dashboard']);
+      }),
+    );
+  }, { dispatch: false });
 
 
 }

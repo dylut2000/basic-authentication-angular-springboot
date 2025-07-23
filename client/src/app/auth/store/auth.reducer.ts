@@ -51,7 +51,7 @@ export const authReducer = createReducer(
     error: payload.error || 'Failed to authenticate',
   })),
 
-  on(AuthActions.LOGOUT, (state) => ({
+  on(AuthActions.LOGOUT, () => ({
     ...initialState,
   }))
 

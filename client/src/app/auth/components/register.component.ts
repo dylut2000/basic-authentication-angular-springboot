@@ -4,7 +4,7 @@ import {ReactiveFormsModule, FormBuilder, Validator, Validators} from '@angular/
 import {Store} from '@ngrx/store';
 import {AuthService} from '../service/auth.service';
 import {RegisterRequestType} from '../model/auth.model';
-import {REGISTER} from '../store/auth.actions';
+import {LOGOUT, REGISTER} from '../store/auth.actions';
 
 @Component({
   selector: 'auth-register',
@@ -85,6 +85,7 @@ export class RegisterComponent {
   fb: FormBuilder = inject(FormBuilder);
   store = inject(Store);
   authService: AuthService = inject(AuthService);
+
 
   form = this.fb.nonNullable.group({
     username: ['', Validators.required],
