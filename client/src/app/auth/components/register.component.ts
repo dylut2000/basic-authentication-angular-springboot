@@ -113,4 +113,5 @@ export class RegisterComponent {
     this.store.dispatch(REGISTER({credentials}))
 
   }
+
 }
