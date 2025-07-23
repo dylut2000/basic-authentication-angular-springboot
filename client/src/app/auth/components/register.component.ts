@@ -1,9 +1,13 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
+import {ReactiveFormsModule, FormBuilder, Validator, Validators} from '@angular/forms';
+import {Store} from '@ngrx/store';
+import {AuthService} from '../service/auth.service';
+import {RegisterRequestType} from '../model/auth.model';
 
 @Component({
   selector: 'auth-register',
-  imports: [RouterLink],
+  imports: [RouterLink, ReactiveFormsModule],
   template: `
     <div class="w-screen h-screen grid place-items-center p-4 select-none">
       <div class="bg-white rounded-3xl shadow-md p-10 w-full max-w-md border-t-4 border-teal-500 mt-[-2rem] fade-in-up">
@@ -22,11 +26,11 @@ import {RouterLink} from '@angular/router';
           <p class="text-sm text-gray-500 mb-6">Sign up to continue</p>
         </div>
 
-        <form class="space-y-5">
+        <form class="space-y-5" [formGroup]="form" (ngSubmit)="onSubmit()">
           <!-- Email -->
           <div>
             <label class="block text-gray-700 mb-1" for="username">Username</label>
-            <input id="username" type="text" placeholder="Username"
+            <input id="username" formControlName="username" type="text" placeholder="Username"
                    class="w-full px-4 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:outline-none" />
           </div>
 
@@ -34,7 +38,7 @@ import {RouterLink} from '@angular/router';
           <div>
             <label class="block text-gray-700 mb-1" for="password">Password</label>
             <div class="relative">
-              <input type="password" placeholder="Password" id="password"
+              <input type="password" formControlName="password" placeholder="Password" id="password"
                      class="w-full px-4 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:outline-none pr-10" />
               <span class="absolute right-3 top-2.5 text-gray-400 cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill mt-1" viewBox="0 0 16 16">
@@ -49,7 +53,7 @@ import {RouterLink} from '@angular/router';
           <div>
             <label class="block text-gray-700 mb-1" for="confirm-password">Confirm password</label>
             <div class="relative">
-              <input type="password" placeholder="Confirm password" id="confirm-password"
+              <input type="password" formControlName="confirmPassword" placeholder="Confirm password" id="confirm-password"
                      class="w-full px-4 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:outline-none pr-10" />
               <span class="absolute right-3 top-2.5 text-gray-400 cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill mt-1" viewBox="0 0 16 16">
@@ -66,7 +70,7 @@ import {RouterLink} from '@angular/router';
           </div>
 
           <!-- Sign In Button -->
-          <button type="submit"
+          <button
                   class="w-full bg-teal-500 hover:bg-teal-600 text-white py-2 rounded-md transition-colors cursor-pointer">
             Sign Up
           </button>
@@ -75,4 +79,40 @@ import {RouterLink} from '@angular/router';
     </div>
   `,
 })
-export class RegisterComponent {}
+export class RegisterComponent {
+
+  fb: FormBuilder = inject(FormBuilder);
+  store = inject(Store);
+  authService: AuthService = inject(AuthService);
+
+  form = this.fb.nonNullable.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+    confirmPassword: ['', Validators.required],
+  });
+
+  onSubmit() {
+
+    // CHECK IF FORM IS VALID
+
+    if (!this.form.valid) {
+      alert('All fields are required');
+      return;
+    }
+
+    // CHECK IF PASSWORD MATCHES
+
+    if (this.form.value.password !== this.form.value.confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+
+    const credentials: RegisterRequestType = {...this.form.getRawValue(), role: "USER"} ;
+
+    this.authService.register(credentials).subscribe(data => {
+      console.log(data)
+    }, error => {
+      console.log(error)
+    });
+  }
+}

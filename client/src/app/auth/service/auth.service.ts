@@ -28,17 +28,9 @@ export class AuthService {
   // ERROR HANDLER
 
   private handleError(error: HttpErrorResponse) {
-    let errorMessage = 'An unknown error occurred!';
 
-    if (error.error instanceof ErrorEvent) {
-      // Client-side error
-      errorMessage = `Client-side error: ${error.error.message}`;
-    } else {
-      // Server-side error
-      errorMessage = `Server error (${error.status}): ${error.message}`;
-    }
+    let errorMessage = error.error ? error.error.message : 'An unknown error occurred!';
 
-    console.error(errorMessage);
     return throwError(() => new Error(errorMessage));
   }
 }
