@@ -22,12 +22,16 @@ export const authReducer = createReducer(
 
   on(AuthActions.REGISTER_SUCCESS, (state, payload) => ({
     ...state,
+    token: null,
     user: payload.data,
     loading: false
   })),
 
   on(AuthActions.REGISTER_FAILURE, (state, payload) => ({
     ...state,
+    token: null,
+    user: null,
+    isLoggedIn: false,
     loading: false,
     error: payload.error || 'Failed to register',
   })),
@@ -47,12 +51,16 @@ export const authReducer = createReducer(
 
   on(AuthActions.LOGIN_FAILURE, (state, payload) => ({
     ...state,
+    token: null,
+    user: null,
+    isLoggedIn: false,
     loading: false,
     error: payload.error || 'Failed to authenticate',
   })),
 
-  on(AuthActions.LOGOUT, () => ({
-    ...initialState,
-  }))
+  on(AuthActions.LOGOUT, () => {
+    localStorage.clear();
+    return initialState;
+  })
 
 )

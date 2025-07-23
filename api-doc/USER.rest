@@ -2,7 +2,7 @@
 @SERVER = http://localhost:8080/api/users
 @USER = user
 @PASSWORD = 123456
-@TOKEN = eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJuZW9AZ21haWwuY29tIiwiaXNzIjoiRFlMVVQyMDAwIiwiaWF0IjoxNzUzMjcwMjk0LCJleHAiOjE3NTMyNzM4OTR9.CiJrsktLippHVzDgMaDo26D-q2LnCgcHtUnuWi7g9NHzXlbkoOmP7LsB3Xp0oEZ9
+
 
 
 
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 {
   "username": "neo@gmail.com",
-  "password": "123456"
+  "password": "12345"
 }
 
 

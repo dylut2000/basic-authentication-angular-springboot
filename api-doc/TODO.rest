@@ -4,12 +4,13 @@
 @TODO_ID = XXXXXXXXXXXXXXXX
 @USER = user
 @PASSWORD = 123456
-@TOKEN = Bearer XXXXXXXXXXXXXXX
-
+@TOKEN = eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJuZW9AZ21haWwuY29tIiwiaXNzIjoiRFlMVVQyMDAwIiwiaWF0IjoxNzUzMjc1MDQ5LCJleHAiOjE3NTMyNzg2NDl9._ebRJwcmw8NZX9ThLTzsyL89FrRL0bjbQwt9pviG5Y1OUofUmq-xDAr74wUFFdXI
 
 
 ##### GET ALL TODOS
 GET {{SERVER}}
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
 
 
 

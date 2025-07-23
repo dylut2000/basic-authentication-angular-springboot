@@ -23,7 +23,10 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         request -> request
-                                .requestMatchers("/", "/api/users/register", "/api/users/login").permitAll()
+                                // Allow all requests or add .requestMatchers("/todos/**").hasRole("USER")
+                                // .requestMatchers("/admin/**").hasAnyRole("ADMIN", "SUPERUSER")
+                                .requestMatchers("/**", "/api/users/register", "/api/users/login").permitAll()
+                                .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());
 

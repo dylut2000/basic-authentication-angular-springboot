@@ -20,10 +20,9 @@ export class AuthEffects {
       exhaustMap(action =>
         this.authService.register(action.credentials).pipe(
           map(result => {
-            // setTimeout(() => { this.router.navigate(['/login']);}, 3000)
             return AuthActions.REGISTER_SUCCESS({ data: result.data })
           }),
-          catchError(error => of(AuthActions.REGISTER_FAILURE({ error })))
+          catchError(error => of(AuthActions.REGISTER_FAILURE({ error: error?.message })))
         )
       )
     );
@@ -39,6 +38,16 @@ export class AuthEffects {
     );
   }, { dispatch: false });
 
+  // REGISTER FAIL EFFECT
+
+  registerFail$ = createEffect(() => {
+    return this.actions$.pipe(ofType(AuthActions.REGISTER_FAILURE),
+      tap(data => {
+        console.log(data)
+      }),
+    );
+  }, { dispatch: false });
+
   // LOGIN EFFECT
 
   login$ = createEffect(() => {
@@ -49,7 +58,7 @@ export class AuthEffects {
           map(result => {
             return AuthActions.LOGIN_SUCCESS({ data: result.data })
           }),
-          catchError(error => of(AuthActions.LOGIN_FAILURE({ error })))
+          catchError(error => of(AuthActions.LOGIN_FAILURE({ error: error?.message })))
         )
       )
     );
@@ -60,8 +69,18 @@ export class AuthEffects {
   loginSuccess$ = createEffect(() => {
     return this.actions$.pipe(ofType(AuthActions.LOGIN_SUCCESS),
       tap(data => {
-        console.log({data});
         this.router.navigate(['/dashboard']);
+      }),
+    );
+  }, { dispatch: false });
+
+
+  // REGISTER FAIL EFFECT
+
+  loginFail$ = createEffect(() => {
+    return this.actions$.pipe(ofType(AuthActions.LOGIN_FAILURE),
+      tap(data => {
+        console.log(data)
       }),
     );
   }, { dispatch: false });
