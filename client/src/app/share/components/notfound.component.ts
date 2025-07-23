@@ -1,10 +1,8 @@
 import {Component, inject} from '@angular/core';
-import {RouterLink} from '@angular/router';
 import {Location} from '@angular/common';
 
 @Component({
   selector: 'not-found',
-  imports: [RouterLink],
   template: `
     <div class="w-screen h-screen grid place-items-center p-4 select-none">
       <div class="flex flex-col justify-center items-center">

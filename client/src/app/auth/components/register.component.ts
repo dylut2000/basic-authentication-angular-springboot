@@ -6,7 +6,7 @@ import {RouterLink} from '@angular/router';
   imports: [RouterLink],
   template: `
     <div class="w-screen h-screen grid place-items-center p-4 select-none">
-      <div class="bg-white rounded-3xl shadow-md p-10 w-full max-w-md border-t-4 border-teal-500 mt-[-2rem]">
+      <div class="bg-white rounded-3xl shadow-md p-10 w-full max-w-md border-t-4 border-teal-500 mt-[-2rem] fade-in-up">
         <div class="flex flex-col items-center">
 
           <div class="mb-6">
