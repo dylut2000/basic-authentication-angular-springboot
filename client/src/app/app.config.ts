@@ -9,6 +9,7 @@ import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import { localStorageSync } from 'ngrx-store-localstorage';
 
 import * as fromAuth from './auth/store/auth.reducer';
+import {AuthEffects} from './auth/store/auth.effects';
 
 function authLocalStorageSyncReducer(
   reducer: ActionReducer<any>
@@ -29,7 +30,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideStore({}, { metaReducers }),
     provideState(fromAuth.authFeatureKey, fromAuth.authReducer),
-    provideEffects(),
+    provideEffects([AuthEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
   ]
 };

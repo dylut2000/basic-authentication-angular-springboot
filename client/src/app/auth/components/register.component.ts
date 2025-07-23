@@ -4,6 +4,7 @@ import {ReactiveFormsModule, FormBuilder, Validator, Validators} from '@angular/
 import {Store} from '@ngrx/store';
 import {AuthService} from '../service/auth.service';
 import {RegisterRequestType} from '../model/auth.model';
+import {REGISTER} from '../store/auth.actions';
 
 @Component({
   selector: 'auth-register',
@@ -107,12 +108,9 @@ export class RegisterComponent {
       return;
     }
 
-    const credentials: RegisterRequestType = {...this.form.getRawValue(), role: "USER"} ;
+    const credentials: RegisterRequestType = {...this.form.getRawValue(), role: "USER"};
 
-    this.authService.register(credentials).subscribe(data => {
-      console.log(data)
-    }, error => {
-      console.log(error)
-    });
+    this.store.dispatch(REGISTER({credentials}))
+
   }
 }
